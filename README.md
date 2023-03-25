@@ -10,12 +10,13 @@ This example have been built on the blog boilerplate template
 
 1. Clone repository
 2. Run `npm install`
-3. Create a `.env.development` on root and add the required variables using the `.env.template` as a template
-4. Insepect the `literalConstants.ts` and especially the const `ChatGPT_RoleInstructions` which sets the "persona" of the chat responder. For this example it assumes the role of a web editor assitant of a food blog
-5. Run `Sanity dev`
-6. Create and publish a (food related) blog post
-7. Open `Co-writer` tab
-8. Get creative!
+3. Create an OpenAI account and copy an API-key from https://platform.openai.com/account/api-keys
+4. Create a `.env.development` on root and add the required variables using the `.env.template` as a template
+5. Insepect the `literalConstants.ts` and especially the const `ChatGPT_RoleInstructions` which sets the "persona" of the chat responder. For this example it assumes the role of a web editor assitant of a food blog
+6. Run `Sanity dev`
+7. Create and publish a (food related) blog post
+8. Open `Co-writer` tab
+9. Get creative and write good content!
 
 ## Remaining tasks
 
