@@ -1,12 +1,21 @@
 # Sanity Co-Writer
 
+## What it is?
+
+Sanity Co-Writer is a ChatGPT-powered editorial assistant that is contextually aware of the document you are working on, ensuring it provides precise and relevant assistance. In this example, you will assume the role of a web editor for a food blog, and the assistant will cater its help accordingly.
+
 ## Getting started
+
+This example have been built on the blog boilerplate template
 
 1. Clone repository
 2. Run `npm install`
 3. Create a `.env.development` on root and add the required variables using the `.env.template` as a template
 4. Insepect the `literalConstants.ts` and especially the const `ChatGPT_RoleInstructions` which sets the "persona" of the chat responder. For this example it assumes the role of a web editor assitant of a food blog
 5. Run `Sanity dev`
+6. Create and publish a (food related) blog post
+7. Open `Co-writer` tab
+8. Get creative!
 
 ## Remaining tasks
 
