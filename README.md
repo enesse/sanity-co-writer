@@ -32,3 +32,4 @@ This example have been built on the blog boilerplate template
 - [ ] Add copy to fields passed in options, i.e; `Copy to title`, `Copy to body`
 - [ ] Don't render co-writer button (and view) on all schema types
 - [x] Add `Send on [enter]` in chat input textbox
+- [ ] Improve chat presentation and how the Sanity UI components are used

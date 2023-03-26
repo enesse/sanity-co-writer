@@ -1,7 +1,7 @@
 import {RequestModel, Message} from '../interfaces/requestModel'
 import {ResponseModel} from '../interfaces/responseModel'
 
-export async function GetChatStream(
+export async function OpenChatStream(
   messages: Message[],
   chuckReadCallback: (chunckMessage: string) => void
 ): Promise<void> {

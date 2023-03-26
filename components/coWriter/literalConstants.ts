@@ -15,7 +15,7 @@ export const PredefinedQuestions_Body: string[] = [
 ]
 export const PredefinedQuestions_NoBody: string[] = [
   'Write me an outline',
-  'Could you write me the entire blog post?',
+  'Could you write my entire blog post?',
 ]
 
 //Generated with the help of ChatGPT 4
