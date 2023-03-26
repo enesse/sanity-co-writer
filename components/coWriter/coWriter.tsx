@@ -1,7 +1,7 @@
 import {Avatar, Box, Stack, Flex, Spinner, Button, TextArea, Card, Text, useToast} from '@sanity/ui'
 import {BlockDecoratorProps} from 'sanity'
 import {BsSend} from 'react-icons/bs'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, KeyboardEvent} from 'react'
 import {ReactMarkdown} from 'react-markdown/lib/react-markdown'
 import {Message} from '../../services/openai/interfaces/requestModel'
 import {GetChatStream} from '../../services/openai/services/chatGptService'
@@ -238,6 +238,7 @@ export default function openCoWriter(props: any) {
         <Box flex={'auto'}>
           <TextArea
             onChange={(event) => setUserInput(event.currentTarget.value)}
+            onKeyDown={(e) => handleUserInputKeyDown(e)}
             value={userInput}
             readOnly={isBusy}
             padding={3}
@@ -260,6 +261,12 @@ export default function openCoWriter(props: any) {
         </Box>
       </Flex>
     )
+
+    function handleUserInputKeyDown(e: KeyboardEvent<HTMLTextAreaElement>): void {
+      if (e.key === 'Enter') {
+        sendChat(userInput)
+      }
+    }
   }
 
   function updateChatStreamOutput(message: string) {
