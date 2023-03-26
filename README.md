@@ -31,4 +31,4 @@ This example have been built on the blog boilerplate template
 - [ ] Add `Copy to clipboard` functionallity
 - [ ] Add copy to fields passed in options, i.e; `Copy to title`, `Copy to body`
 - [ ] Don't render co-writer button (and view) on all schema types
-- [ ] Add `Send on [enter]` in chat input textbox
+- [x] Add `Send on [enter]` in chat input textbox
