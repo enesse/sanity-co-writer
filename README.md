@@ -4,7 +4,7 @@
 
 Sanity Co-Writer is a ChatGPT-powered editorial assistant that is contextually aware of the document you are working on, ensuring it provides precise and relevant assistance. In this example, you will assume the role of a web editor for a food blog, and the assistant will cater its help accordingly.
 
-## Getting started
+## How do I use it?
 
 This example have been built on the blog boilerplate template
 
@@ -18,20 +18,10 @@ This example have been built on the blog boilerplate template
 8. Open `Co-writer` tab
 9. Get creative and write good content!
 
-## Remaining tasks
-
-### Must have
-
-- [x] Add streamed chat gpt responses (https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb)
-- [x] Refactor & Clean up
-- [x] Move hard coded variables to environment variables
-- [x] Start a new, clean repository
-  - [x] Make it public
-- [ ] Make Co-Writer a Sanity plugin, not a proof of concept project
-
-#### Nice to have
+## Work to be done
 
 - [x] Add user profile image and name to the chat view
+- [ ] Make Co-Writer a Sanity plugin, not a proof of concept project
 - [ ] Open chat in a `Review Changes`-like pane and don't close document editor window
 - [ ] Store chat dialog in Sanity for future reference
 - [ ] Pass document relevant fields via options to the component
