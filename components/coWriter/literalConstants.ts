@@ -1,10 +1,14 @@
-export const ChatGreeting_Intro: string = `Hi {NAME} I'm Sanity Co-Writer, your creative writing assistant.\n\n`
+export const ChatGreeting_Intro: string = `Hi {NAME}, I'm Sanity Co-Writer, your creative writing assistant.\n\n`
 export const ChatGreeting_HasTitle: string = `I see that you have written the a post named`
 export const ChatGreeting_HasBody: string = `and I have read its' content.`
 
 export const PredefinedQuestions_Intro: string =
   "Here's some suggestions that you can try out to get started, or just ask me what you need help with"
-export const PredefinedQuestions_Title: string[] = ['Give me some alternative titles']
+export const PredefinedQuestions_Default: string[] = ['What more can you assist me with?']
+export const PredefinedQuestions_Title: string[] = ['Suggest a few alternative titles']
+export const PredefinedQuestions_NotTitle: string[] = [
+  'Suggest a few food related topics to help me get started',
+]
 export const PredefinedQuestions_Body: string[] = [
   'Do you have any feedback?',
   'What would be relevant SEO tags?',

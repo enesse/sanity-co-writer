@@ -13,8 +13,10 @@ import {
   ChatGreeting_HasTitle,
   ChatGreeting_Intro,
   PredefinedQuestions_Body,
+  PredefinedQuestions_Default,
   PredefinedQuestions_Intro,
-  PredefinedQuestions_NotBody,
+  PredefinedQuestions_NotBody as PredefinedQuestions_NoBody,
+  PredefinedQuestions_NotTitle as PredefinedQuestions_NoTitle,
   PredefinedQuestions_Title,
 } from './literalConstants'
 
@@ -86,27 +88,30 @@ export default function openCoWriter(props: any) {
   }
 
   function renderGreeting(props: any): any {
-    const title: string = props.document.displayed.title
-    const body: BlockDecoratorProps = props.document.displayed.body
-
-    var greeting = ChatGreeting_Intro.replace('{NAME}', parseUserFirstName())
-    if (title) {
-      greeting = greeting.concat(' ', `${ChatGreeting_HasTitle} **${title}**`)
-    }
-    if (body) {
-      greeting = greeting.concat(' ', ChatGreeting_HasBody)
-    }
-
     return (
       <Flex gap={2} align="flex-start" padding={3}>
         <Avatar alt="The profile picture of a helpful co-writer" src={coWriterAvatar} size={1} />
         <Card padding={3} radius={5} marginBottom={3} tone="primary">
           <Text align="left" size={[2, 2, 1]}>
-            <ReactMarkdown>{greeting}</ReactMarkdown>
+            <ReactMarkdown>{generateGreeting()}</ReactMarkdown>
           </Text>
         </Card>
       </Flex>
     )
+
+    function generateGreeting() {
+      const title: string = props.document.displayed.title
+      const body: BlockDecoratorProps = props.document.displayed.body
+
+      var greeting = ChatGreeting_Intro.replace('{NAME}', parseUserFirstName())
+      if (title) {
+        greeting = greeting.concat(' ', `${ChatGreeting_HasTitle} **${title}**`)
+      }
+      if (body) {
+        greeting = greeting.concat(' ', ChatGreeting_HasBody)
+      }
+      return greeting
+    }
   }
 
   function parseUserFirstName(): string {
@@ -114,18 +119,8 @@ export default function openCoWriter(props: any) {
   }
 
   function renderPredefinedQuestions(props: any): any {
-    const questions: string[] = []
-    const title = props.document.displayed.title
-    const body = props.document.displayed.body
+    const questions: string[] = generatePredefinedQuestions()
 
-    if (title) {
-      questions.push(...PredefinedQuestions_Title)
-    }
-    if (body) {
-      questions.push(...PredefinedQuestions_Body)
-    } else {
-      questions.push(...PredefinedQuestions_NotBody)
-    }
     return (
       <Flex gap={2} align="flex-start" padding={3}>
         <Avatar alt="The profile picture of a helpful co-writer" src={coWriterAvatar} size={1} />
@@ -155,6 +150,26 @@ export default function openCoWriter(props: any) {
         </Stack>
       </Flex>
     )
+
+    function generatePredefinedQuestions() {
+      const questions: string[] = []
+      const title = props.document.displayed.title
+      const body = props.document.displayed.body
+
+      if (title) {
+        questions.push(...PredefinedQuestions_Title)
+      } else {
+        questions.push(...PredefinedQuestions_NoTitle)
+      }
+      if (body) {
+        questions.push(...PredefinedQuestions_Body)
+      } else {
+        questions.push(...PredefinedQuestions_NoBody)
+      }
+
+      questions.push(...PredefinedQuestions_Default)
+      return questions
+    }
   }
 
   function renderTemporaryStreamChat(): any {
