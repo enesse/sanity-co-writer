@@ -8,17 +8,7 @@ import {GetChatStream} from '../../services/openai/services/chatGptService'
 import {generateSystemRole} from '../../services/openai/utilities/roleGenerator'
 import {useCurrentUser} from 'sanity'
 import coWriterAvatar from '../../assets/images/co-writer-icon.png'
-import {
-  ChatGreeting_HasBody,
-  ChatGreeting_HasTitle,
-  ChatGreeting_Intro,
-  PredefinedQuestions_Body,
-  PredefinedQuestions_Default,
-  PredefinedQuestions_Intro,
-  PredefinedQuestions_NotBody as PredefinedQuestions_NoBody,
-  PredefinedQuestions_NotTitle as PredefinedQuestions_NoTitle,
-  PredefinedQuestions_Title,
-} from './literalConstants'
+import * as literal from './literalConstants'
 
 export default function openCoWriter(props: any) {
   const systemRoleMessage: Message = generateSystemRole(props)
@@ -103,12 +93,12 @@ export default function openCoWriter(props: any) {
       const title: string = props.document.displayed.title
       const body: BlockDecoratorProps = props.document.displayed.body
 
-      var greeting = ChatGreeting_Intro.replace('{NAME}', parseUserFirstName())
+      var greeting = literal.ChatGreeting_Intro.replace('{NAME}', parseUserFirstName())
       if (title) {
-        greeting = greeting.concat(' ', `${ChatGreeting_HasTitle} **${title}**`)
+        greeting = greeting.concat(' ', `${literal.ChatGreeting_HasTitle} **${title}**`)
       }
       if (body) {
-        greeting = greeting.concat(' ', ChatGreeting_HasBody)
+        greeting = greeting.concat(' ', literal.ChatGreeting_HasBody)
       }
       return greeting
     }
@@ -127,7 +117,7 @@ export default function openCoWriter(props: any) {
         <Stack>
           <Card padding={3} radius={5} marginBottom={3} tone="primary">
             <Text align="left" size={[2, 2, 1]}>
-              <ReactMarkdown>{PredefinedQuestions_Intro}</ReactMarkdown>
+              <ReactMarkdown>{literal.PredefinedQuestions_Intro}</ReactMarkdown>
             </Text>
           </Card>
           <Flex>
@@ -157,17 +147,17 @@ export default function openCoWriter(props: any) {
       const body = props.document.displayed.body
 
       if (title) {
-        questions.push(...PredefinedQuestions_Title)
+        questions.push(...literal.PredefinedQuestions_Title)
       } else {
-        questions.push(...PredefinedQuestions_NoTitle)
+        questions.push(...literal.PredefinedQuestions_NoTitle)
       }
       if (body) {
-        questions.push(...PredefinedQuestions_Body)
+        questions.push(...literal.PredefinedQuestions_Body)
       } else {
-        questions.push(...PredefinedQuestions_NoBody)
+        questions.push(...literal.PredefinedQuestions_NoBody)
       }
 
-      questions.push(...PredefinedQuestions_Default)
+      questions.push(...literal.PredefinedQuestions_Default)
       return questions
     }
   }

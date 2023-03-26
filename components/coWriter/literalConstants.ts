@@ -6,14 +6,14 @@ export const PredefinedQuestions_Intro: string =
   "Here's some suggestions that you can try out to get started, or just ask me what you need help with"
 export const PredefinedQuestions_Default: string[] = ['What more can you assist me with?']
 export const PredefinedQuestions_Title: string[] = ['Suggest a few alternative titles']
-export const PredefinedQuestions_NotTitle: string[] = [
+export const PredefinedQuestions_NoTitle: string[] = [
   'Suggest a few food related topics to help me get started',
 ]
 export const PredefinedQuestions_Body: string[] = [
   'Do you have any feedback?',
   'What would be relevant SEO tags?',
 ]
-export const PredefinedQuestions_NotBody: string[] = [
+export const PredefinedQuestions_NoBody: string[] = [
   'Write me an outline',
   'Could you write me the entire blog post?',
 ]
