@@ -7,8 +7,8 @@ import {
 import {Message} from '../interfaces/requestModel'
 
 export function generateSystemRole(props: any): Message {
-  const title: string = props.document.displayed.title
-  const body: BlockDecoratorProps = props.document.displayed.body
+  const title: string = props ? props.document.displayed.title : ''
+  const body: BlockDecoratorProps = props ? props.document.displayed.body : ''
 
   var instructions = ChatGPT_RoleInstructions
   if (title) {
