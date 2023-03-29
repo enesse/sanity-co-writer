@@ -1,6 +1,6 @@
 import {CloseIcon} from '@sanity/icons'
 import React, {useCallback} from 'react'
-import {usePaneRouter} from 'sanity/desk'
+import {useDocumentPane, usePaneRouter} from 'sanity/desk'
 import {Avatar, Box, Stack, Flex, Spinner, Button, TextArea, Card, Text} from '@sanity/ui'
 import {useCurrentUser} from 'sanity'
 import {BsSend} from 'react-icons/bs'
@@ -14,12 +14,14 @@ import * as literal from '../../components/coWriter/literalConstants'
 
 export default function CustomInspector() {
   const {setParams} = usePaneRouter()
+  const {editState} = useDocumentPane()
+  const currentDocument = editState?.published
 
   const handleClose = useCallback(() => {
     setParams((params) => ({...params, inspect: undefined}))
   }, [setParams])
 
-  const systemRoleMessage: Message = generateSystemRole(null)
+  const systemRoleMessage: Message = generateSystemRole(currentDocument)
   const user = useCurrentUser()
   const [userInput, setUserInput] = useState<string>('')
   const [chatOutput, setChatOutput] = useState<string>('')
@@ -75,8 +77,8 @@ export default function CustomInspector() {
     return (
       <Flex align="flex-end" padding={3}>
         <Stack>
-          {renderGreeting(null)}
-          {renderPredefinedQuestions(null)}
+          {renderGreeting(currentDocument)}
+          {renderPredefinedQuestions(currentDocument)}
           {chatLogs
             .filter((log) => log.role !== 'system')
             .map((log, index) => {
@@ -106,8 +108,8 @@ export default function CustomInspector() {
     )
 
     function generateGreeting() {
-      const title: string = props ? props.document.displayed.title : ''
-      const body = props ? props.document.displayed.body : ''
+      const title: string = props ? props.title : ''
+      const body = props ? props.body : ''
 
       var greeting = literal.ChatGreeting_Intro.replace('{NAME}', parseUserFirstName())
       if (title) {
@@ -168,8 +170,8 @@ export default function CustomInspector() {
 
     function generatePredefinedQuestions() {
       const questions: string[] = []
-      const title = props ? props.document.displayed.title : ''
-      const body = props ? props.document.displayed.body : ''
+      const title = props ? props.title : ''
+      const body = props ? props.body : ''
 
       if (title) {
         questions.push(...literal.PredefinedQuestions_Title)

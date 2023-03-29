@@ -1,4 +1,4 @@
-import {BlockDecoratorProps} from 'sanity'
+import {BlockDecoratorProps, SanityDocument} from 'sanity'
 import {
   ChatGPT_RoleInstructions,
   ChatGPT_RoleInstructions_HasBody,
@@ -6,9 +6,10 @@ import {
 } from '../../../components/coWriter/literalConstants'
 import {Message} from '../interfaces/requestModel'
 
-export function generateSystemRole(props: any): Message {
-  const title: string = props ? props.document.displayed.title : ''
-  const body: BlockDecoratorProps = props ? props.document.displayed.body : ''
+export function generateSystemRole(props: SanityDocument | null | undefined): Message {
+  const title: string = (props && (props['title'] as string)) || ''
+  const body: BlockDecoratorProps | undefined | null =
+    props && (props['body'] as BlockDecoratorProps | undefined)
 
   var instructions = ChatGPT_RoleInstructions
   if (title) {
